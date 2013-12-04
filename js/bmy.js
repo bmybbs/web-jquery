@@ -92,7 +92,6 @@ function load_personal_status() {
 	if(typeof(localStorage.userid) == 'undefined')
 		$('#bmy-ps-info').html("<a href='#'>登录</a>");
 	else {
-		$('#bmy-ps-info').html("<a href='#");
 		var url_query_user = 'api/user/query?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
 		$.getJSON(url_query_user, function(data) {
 			if(data.errcode == 0) {
