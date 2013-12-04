@@ -24,8 +24,9 @@ function load_top_board() {
 			type: "GET",
 			url: 'api/board/list?secstr='+bmysecstrs[i].id+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey,
 			dataType: 'json',
+			async: false,
 			success: function(data) {
-				var out = "<div class='bmy-sec'><div class='bmy-sectitle'>"+bmysecstrs[i].id+"区/"+bmysecstrs.name+"</div><div>";
+				var out = "<div class='bmy-sec'><div class='bmy-sectitle'>"+bmysecstrs[i].id+"区/"+bmysecstrs[i].name+"</div><div>";
 				var boards = data.boardlist; // 默认人气排序
 				var maxnum = (boards.length > 5) ? 5 : boards.length;
 				for(var j=0; j<maxnum; j++) {
