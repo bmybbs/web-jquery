@@ -18,6 +18,16 @@ var bmysecstrs = [
 	{ id: 'C', name: "俱乐部区" }
 ];
 
+function parse_article_list(articles, callback) {
+	var out = "<table class='table'><thead><tr><td>#</td><td>标题</td></tr></thead><tbody>";
+	for(var i=0; i<articles.length; i++) {
+		out += "<tr><td>" + i + "</td><td>" + articles[i].title + "</td></tr>";
+	}
+	out += "</tbody></table>";
+
+	callback(out);
+}
+
 function load_top_board() {
 	for(var i=0; i<bmysecstrs.length; i++) {
 		$.ajax({
@@ -37,4 +47,17 @@ function load_top_board() {
 			}
 		});
 	}
+}
+
+function load_topten() {
+	$.ajax({
+		type: "GET",
+		url: 'api/article/list?type=top10',
+		dataType: 'json',
+		success: function(data) {
+			parse_article_list(data.articlelist, function(out) {
+				$('div#topten').html(out);
+			});
+		}
+	});
 }
