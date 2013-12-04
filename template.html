@@ -57,8 +57,9 @@
 	<script src="js/bmy.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			setInterval(load_personal_status, 30000);	// 每 30 秒更新一次用户数据
+			load_personal_status();
 			load_top_board();
+			setInterval(load_personal_status, 30000);	// 每 30 秒更新一次用户数据
 		});
 	</script>
 
