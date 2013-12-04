@@ -19,7 +19,7 @@ var bmysecstrs = [
 ];
 
 function parse_article_list(articles, callback) {
-	var out = "<table class='table'><thead><tr><td>#</td><td>标题</td></tr></thead><tbody>";
+	var out = "<table class='table table-hover'><thead><tr><td>#</td><td>标题</td></tr></thead><tbody>";
 	for(var i=0; i<articles.length; i++) {
 		out += "<tr><td>" + i + "</td><td>" + articles[i].title + "</td></tr>";
 	}
@@ -57,6 +57,32 @@ function load_topten() {
 		success: function(data) {
 			parse_article_list(data.articlelist, function(out) {
 				$('div#topten').html(out);
+			});
+		}
+	});
+}
+
+function load_announce() {
+	$.ajax({
+		type: "GET",
+		url: 'api/article/list?type=announce',
+		dataType: 'json',
+		success: function(data) {
+			parse_article_list(data.articlelist, function(out) {
+				$('div#announce').html(out);
+			});
+		}
+	});
+}
+
+function load_commend() {
+	$.ajax({
+		type: "GET",
+		url: 'api/article/list?type=commend',
+		dataType: 'json',
+		success: function(data) {
+			parse_article_list(data.articlelist, function(out) {
+				$('div#commend').html(out);
 			});
 		}
 	});
