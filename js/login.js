@@ -17,7 +17,7 @@ $('button#btn-login').click(function() {
 				localStorage.sessid = data.sessid;
 				localStorage.token  = data.token;
 				localStorage.is_rmbme = is_rmbme;
-				document.location.href = 'app.html';
+				document.location.href = 'dashboard.html';
 			}
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
