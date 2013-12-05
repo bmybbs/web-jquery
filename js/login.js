@@ -1,7 +1,7 @@
 $('button#btn-login').click(function() {
 	var userid   = $('input#username').val();
 	var passwd   = $('input#password').val();
-	var is_rmbme = $('input#chk_remember').val();
+	var is_rmbme = $('input#chk_remember').is(':checked');
 
 	var url_login = 'api/user/login?userid='+userid+'&passwd='+passwd+'&appkey=newweb';
 
