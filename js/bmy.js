@@ -95,7 +95,7 @@ function load_personal_status() {
 		var url_query_user = 'api/user/query?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
 		$.getJSON(url_query_user, function(data) {
 			if(data.errcode == 0) {
-				$('#bmy-ps-info').html(localStorage.userid + " | 站内信(<span class='label label-successful'>" + data.unread_mail + "</span>) | 提醒(<span class='label label-warning'>" + data.unread_notify + "</span>) | 工具箱 | 注销");
+				$('#bmy-ps-info').html(localStorage.userid + " | 站内信(<span class='bmy-ps-info-num'>" + data.unread_mail + "</span>) | 提醒(<span class='bmy-ps-info-num'>" + data.unread_notify + "</span>) | 工具箱 | <span id='logout-button'>注销</span>");
 			} else {
 				$('#bmy-ps-info').html("<span id='login-button'>登录</span>");
 			}
@@ -131,6 +131,31 @@ function bind_login_button(callback) {
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert('oh no!' + xhr.responseText);
 				alert(thrownError);
+			}
+		});
+	});
+}
+
+function bind_logout_button(callback) {
+	$('span#logout-button').click(function() {
+		var url_logout = 'api/user/logout?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
+		$.ajax({
+			type: "GET",
+			url: url_logout,
+			dataType: 'json',
+			success: function(data) {
+				if(data.errcode != 0) {
+					alert(data.errcode);
+				} else {
+					localStorage.removeItem("userid");
+					localStorage.removeItem("sessid");
+					localStorage.removeItem("token");
+					localStorage.removeItem("is_rmbme");
+
+					if(callback && typeof(callback)=="function") {
+						callback();
+					}
+				}
 			}
 		});
 	});

@@ -37,6 +37,14 @@ body {
 	margin-right: 10px;
 }
 
+#bmy-ps-info span:hover {
+	cursor: pointer;
+}
+
+.bmy-ps-info-num {
+	color: red;
+}
+
 div#bmy-body {
 	min-width: 100%;
 	margin-top: 30px;
