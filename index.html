@@ -50,7 +50,7 @@
 		</div>
 		<footer><div class="container">陕ICP备 05001571号</div></footer>
 		<script src="http://download2.ironblood.net/static/js/jquery-1.10.2.min.js"></script>
-		<script src="js/login.js"></script>
+		<script src="js/bmy.js"></script>
 		<script src="js/showloginpics.js"></script>
 		<script>
 			showloginpics("http://bbs.xjtu.edu.cn/bmyMainPic/using/semi-20131201-20131208.jpg;BMY/con?B=AcdemicClub&F=M.1385889349.A;;http://bbs.xjtu.edu.cn/bmyMainPic/using/software-20131201-20131208.jpg;BMY/con?B=Activity&F=M.1385814021.A");
@@ -81,6 +81,10 @@
 				})
 				.fail(function() {
 					$('div#login-form').removeClass('hidden');
+				});
+
+				bind_login_button(function() {
+					document.location.href = 'dashboard.html';
 				});
 			});
 		</script>

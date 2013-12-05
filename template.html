@@ -79,6 +79,11 @@
 					positionStyle: 'fixed' //'fixed' or 'absolute'
 				});
 			});
+
+			bind_login_button(function() {
+				load_personal_status();
+				$('#login-box').bPopup().close();
+			});
 		});
 	</script>
 
