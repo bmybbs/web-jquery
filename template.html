@@ -68,22 +68,7 @@
 	<script src="js/bmy.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			load_personal_status();
-			load_top_board();
-			setInterval(load_personal_status, 30000);	// 每 30 秒更新一次用户数据
-			$('#login-button').bind('click', function(e) {
-				e.preventDefault();
-				$('#login-box').bPopup({
-					modalClose: false,
-					opacity: 0.6,
-					positionStyle: 'fixed' //'fixed' or 'absolute'
-				});
-			});
-
-			bind_login_button(function() {
-				load_personal_status();
-				$('#login-box').bPopup().close();
-			});
+			bmy_app_init();
 		});
 	</script>
 
