@@ -90,14 +90,14 @@ function load_commend() {
 
 function load_personal_status() {
 	if(typeof(localStorage.userid) == 'undefined')
-		$('#bmy-ps-info').html("<a href='index.html'>登录</a>");
+		$('#bmy-ps-info').html("<span id='login-button'>登录</span>");
 	else {
 		var url_query_user = 'api/user/query?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
 		$.getJSON(url_query_user, function(data) {
 			if(data.errcode == 0) {
 				$('#bmy-ps-info').html(localStorage.userid + " | 站内信(<span class='label label-successful'>" + data.unread_mail + "</span>) | 提醒(<span class='label label-warning'>" + data.unread_notify + "</span>) | 工具箱 | 注销");
 			} else {
-				$('#bmy-ps-info').html("<a href='index.html'>登录</a>");
+				$('#bmy-ps-info').html("<span id='login-button'>登录</span>");
 			}
 		});
 	}

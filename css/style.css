@@ -333,3 +333,83 @@ div.bmy-sectitle {
 .bmy-link-line a:first {
 	margin-right: 10px;
 }
+
+/***** popup ************/
+#login-box {
+	display: none;
+}
+
+.popup,.popup2,.bMulti{
+    background-color: #fff;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 25px 5px #999;
+    /*color: #2B91AF;*/
+	color:#111;
+    display: none;
+    min-width: 450px;
+    padding: 25px;
+}
+.popup .logo{
+	color:#2B91AF;
+	font: bold 325% 'Petrona',sans;
+}
+
+.popup,.bMulti{
+	min-height: 250px;
+}
+
+.popup2 iframe {
+	background: center center no-repeat;
+	min-height: 240px;
+    min-width: 450px;
+}
+.loading {
+	background: center center no-repeat;
+}
+
+.bMulti p{
+	font: 500% 'Petrona',sans-serif;
+	padding: 45px 0 0;
+	text-align: center;
+}
+.bMulti a{left: 175px;
+    position: absolute;
+    top: 175px;
+}
+
+.bpopup-button{
+    background-color: #2B91AF;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.bpopup-button.small{
+    border-radius: 15px;
+    float: right;
+	margin: 22px 5px 0;
+	padding: 6px 15px;
+}
+
+.bpopup-button:hover{
+    background-color: #1e1e1e;
+}
+
+.bpopup-button > span{
+    font-size:84%
+}
+
+.bpopup-button.b-close, .bpopup-button.bClose{
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: none;
+    font: bold 131% sans-serif;
+    padding: 0 6px 2px;
+    position: absolute;
+    right: -7px;
+    top: -7px;
+}
