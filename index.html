@@ -52,6 +52,37 @@
 		<script src="http://download2.ironblood.net/static/js/jquery-1.10.2.min.js"></script>
 		<script src="js/login.js"></script>
 		<script src="js/showloginpics.js"></script>
-		<script>showloginpics("http://bbs.xjtu.edu.cn/bmyMainPic/using/semi-20131201-20131208.jpg;BMY/con?B=AcdemicClub&F=M.1385889349.A;;http://bbs.xjtu.edu.cn/bmyMainPic/using/software-20131201-20131208.jpg;BMY/con?B=Activity&F=M.1385814021.A");</script>
+		<script>
+			showloginpics("http://bbs.xjtu.edu.cn/bmyMainPic/using/semi-20131201-20131208.jpg;BMY/con?B=AcdemicClub&F=M.1385889349.A;;http://bbs.xjtu.edu.cn/bmyMainPic/using/software-20131201-20131208.jpg;BMY/con?B=Activity&F=M.1385814021.A");
+
+			$(document).ready(function (){
+				var userid = localStorage.userid;
+				var sessid = localStorage.sessid;
+				var is_local_rmbme = localStorage.is_rmbme;
+
+				if(typeof(is_local_rmbme) == 'undefined' || typeof(userid) == 'undefined' || typeof(sessid) == 'undefined') {
+					$('div#login-form').removeClass('hidden');
+					return;
+				}
+
+				if(is_local_rmbme==null || userid==null || sessid==null) {
+					$('div#login-form').removeClass('hidden');
+					return;
+				}
+
+				var url_checksession = 'api/user/checksession?userid='+userid+'&sessid='+sessid+'&appkey=newweb';
+
+				$.getJSON(url_checksession, function(data) {
+					if(data.errcode == 0) {
+						$('div#direct-login').removeClass('hidden');
+					} else {
+						$('div#login-form').removeClass('hidden');
+					}
+				})
+				.fail(function() {
+					$('div#login-form').removeClass('hidden');
+				});
+			});
+		</script>
 	</body>
 </html>
