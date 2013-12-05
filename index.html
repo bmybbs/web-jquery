@@ -21,8 +21,8 @@
 			</div>
 
 			<div class="form-signin float-left">
+				<h2>欢迎访问兵马俑 BBS</h2>
 				<div id="login-form" class="hidden">
-					<h2>欢迎访问兵马俑 BBS</h2>
 					<input class="form-control input-lg" autofocus="" id="username" type="text" placeholder="用户名">
 
 					<input class="form-control input-lg" id="password" type="password" placeholder="密码">
@@ -30,6 +30,7 @@
 					<button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
 				</div>
 				<div id="direct-login" class="hidden">
+					<h3>您已登录系统，请直接进入</h3>
 					<button id="btn-direct-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
 				</div>
 				<div id="bmy-links">
@@ -84,6 +85,10 @@
 				});
 
 				bind_login_button(function() {
+					document.location.href = 'dashboard.html';
+				});
+
+				$('#btn-direct-login').click(function() {
 					document.location.href = 'dashboard.html';
 				});
 			});
