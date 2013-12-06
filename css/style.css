@@ -104,13 +104,20 @@ div.bmy-container {
 
 #bmy-sns div {
 	text-align: center;
-	color: white;
 	vertical-align: middle;
 	font-size: 14px;
 	line-height: 20px;
 	padding-top: 17px;
 	padding-bottom: 17px;
 	margin-bottom: 10px;
+}
+
+#bmy-sns a {
+	color: white;
+}
+
+#bmy-sns a:hover {
+	text-decoration: none;
 }
 
 #bmy-sns div:hover {
