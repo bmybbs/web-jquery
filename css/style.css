@@ -1,28 +1,27 @@
-html {
-	min-width: 1200px;
-	height: 100%;
-}
+/*** web basic ***/
 
-body {
-	height: 100%;
-}
+html { min-width: 1200px; height: 100%; }
 
-.float-right {
-	float: right;
-}
+body { height: 100%;}
 
-.float-left {
-	float: left;
-}
+.float-right { float: right; }
+.float-left { float: left; }
+.clear { clear: both; }
+.hidden { display: none; }
 
-.clear {
-	clear: both;
-}
+.bmy-bg-color-blue1	{ background: #3485D8; }
+.bmy-bg-color-blue2	{ background: #2650CA; }
+.bmy-bg-color-red1	{ background: #FF4900; }
+.bmy-bg-color-red2	{ background: #D10000; }
+.bmy-bg-color-gray1	{ background: #A5A5A5; }
+.bmy-bg-color-gray2	{ background: #C6C6C6; }
+.bmy-bg-color-oran	{ background: #FF6000; }
+.bmy-bg-color-green	{ background: #009655; }
 
-.hidden {
-	display: none;
-}
+.bmy-font-sz-20		{ font-size: 20px; }
+.bmy-font-sz-12		{ font-size: 12px; }
 
+/*** 模板页框架 ***/
 #bmy-navbar {
 	margin-bottom: 0px !important;
 	border-bottom-width: 0px !important;
