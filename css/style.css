@@ -18,8 +18,11 @@ body { height: 100%;}
 .bmy-bg-color-oran	{ background: #FF6000; }
 .bmy-bg-color-green	{ background: #009655; }
 
+.bmy-font-sz-36		{ font-size: 36px; }
 .bmy-font-sz-20		{ font-size: 20px; }
 .bmy-font-sz-12		{ font-size: 12px; }
+
+.bmy-span-icon		{ display: inline-block; width: 10px; height: 10px; }
 
 /*** 模板页框架 ***/
 #bmy-navbar {
@@ -144,10 +147,12 @@ div.bmy-sectitle {
 }
 
 #bmy-content {
-	padding: 15px;
+	padding-top: 15px;
+	padding-left: 15px;
 	min-height: 500px;
 	width: 1000px;
 	position: relative;
+	font-size: 14px;
 }
 
 #bmy-content header #ads {
@@ -160,6 +165,37 @@ div.bmy-sectitle {
 	width: 100%;
 }
 
+/*** 导读页 ***/
+#dashboard-main { width: 685px; margin-right: 15px; }
+#dashboard-aside { width: 285px; }
+.dashboard-header { height: 180px; margin-bottom: 15px; }
+
+.dashboard-main-items { border-top: #999999 3px solid; padding: 10px 15px; margin-bottom: 10px; }
+.dashboard-main-title > * { vertical-align: bottom; }
+.dashboard-main-bg { color: #3485D8; font-size: 20px; line-height: 20px; display: inline-block; font-weight: bold; }
+.dashboard-main-title1 { color: #828282; font-size: 14px; line-height: 14px; display: inline-block; }
+.dashboard-main-title2 { margin-left: 10px; color: #C6C6C6; font-size: 10px; margin-bottom: 10px; }
+
+.dashboard-item { color: #333333; line-height: 24px; }
+.dashboard-item span { display: inline-block; }
+.dashboard-item-author { margin-left: 25px; font-size: 10px; }
+
+.dashboard-sec { padding: 0 15px 10px; border-bottom: #D5D5D5 1px solid; margin-bottom: 10px; }
+
+#random-thread { color: white; text-align: center; padding-top: 60px; line-height: 14px; }
+.dashboard-header span { display: block; width: 100%; margin-bottom: 14px; }
+#random-thread-title { line-height: 36px; }
+
+#dashboard-guanshui,
+#dashboard-design,
+#dashboard-kexue,
+#dashboard-zhaopin {
+	height: 100px;
+	margin-bottom: 15px;
+	text-align: middle;
+}
+
+/*** 版面 ***/
 #bmy-board-header {
 	float: left;
 	width: 100%;
