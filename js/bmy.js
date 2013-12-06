@@ -18,14 +18,46 @@ var bmysecstrs = [
 	{ id: 'C', name: "俱乐部区" }
 ];
 
-function parse_article_list(articles, callback) {
-	var out = "<table class='table table-hover'><thead><tr><td>#</td><td>标题</td></tr></thead><tbody>";
-	for(var i=0; i<articles.length; i++) {
-		out += "<tr><td>" + i + "</td><td>" + articles[i].title + "</td></tr>";
-	}
-	out += "</tbody></table>";
+function convert_timestamp_to_date_time_string(timestamp) {
+	var t = new moment.unix(timestamp);
+	return t.format('YYYY.MM.DD HH:mm:ss');
+}
 
-	callback(out);
+function parse_article_list(articles, callback) {
+	var out = "";
+	for(var i=0; i<articles.length; i++) {
+		out += "<div class='dashboard-item'><span>" + articles[i].title + "</span></div>";
+	}
+
+	if(callback && typeof(callback)=="function")
+		callback(out);
+}
+
+function parse_topten_list(articles, callback) {
+	var out = "";
+	for(var i=0; i<articles.length; i++) {
+		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-";
+		out += (i<=3) ? "red1" : "gray1";
+		out += "'></span><span>" + articles[i].title + "</span><span class='dashboard-item-author'>" + articles[i].author + "@" + articles[i].board + "</span></div>";
+		out += "<div class='float-right'>"+convert_timestamp_to_date_time_string((articles[i].type==1) ? articles[i].tid : articles[i].aid)+"</div>";
+		out += "<div class='clear'></div></div>";
+	}
+
+	if(callback && typeof(callback)=="function")
+		callback(out);
+}
+
+function parse_sec_list(articles, callback) {
+	var out = "";
+	for(var i=0; i<articles.length; i++) {
+		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-gray1></span>";
+		out += "<span>" + articles[i].title + "</span><span class='dashboard-item-author'>" + articles[i].author + "@" + articles[i].board + "</span></div>";
+		out += "<div class='float-right'>"+convert_timestamp_to_date_time_string((articles[i].type==1) ? articles[i].tid : articles[i].aid)+"</div>";
+		out += "<div class='clear'></div></div>";
+	}
+
+	if(callback && typeof(callback)=="function")
+		callback(out);
 }
 
 function load_top_board() {
@@ -55,11 +87,27 @@ function load_topten() {
 		url: 'api/article/list?type=top10',
 		dataType: 'json',
 		success: function(data) {
-			parse_article_list(data.articlelist, function(out) {
-				$('div#topten').html(out);
+			parse_topten_list(data.articlelist, function(out) {
+				$(out).appendTo('div#dashboard-topten');
 			});
 		}
 	});
+}
+
+function load_sectop() {
+	for(var i=0; i<bmysecstrs.length; i++) {
+		$.ajax({
+			type: "GET",
+			url: 'api/article/list?type=sectop&secstr='+bmysecstrs[i].id,
+			dataType: 'json',
+			async: false,
+			success: function(data) {
+				parse_sec_list(data.articlelist, function(out) {
+					$(out).appendTo('div#dashboard-sec-'+bmysecstrs[i].id);
+				});
+			}
+		});
+	}
 }
 
 function load_announce() {
@@ -69,7 +117,7 @@ function load_announce() {
 		dataType: 'json',
 		success: function(data) {
 			parse_article_list(data.articlelist, function(out) {
-				$('div#announce').html(out);
+				$(out).appendTo('div#dashboard-announce');
 			});
 		}
 	});
@@ -82,7 +130,7 @@ function load_commend() {
 		dataType: 'json',
 		success: function(data) {
 			parse_article_list(data.articlelist, function(out) {
-				$('div#commend').html(out);
+				$(out).appendTo('div#dashboard-commend');
 			});
 		}
 	});
