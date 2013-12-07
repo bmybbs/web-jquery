@@ -66,7 +66,7 @@ function load_top_board() {
 		if(typeof(localStorage.userid)!="undefined" && typeof(localStorage.sessid)!="undefined")
 			tb_url = 'api/board/list?secstr='+bmysecstrs[i].id+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey;
 		else
-			tb_url = 'api/board/list?secstr='+bmysecstrs[i].id+'&appkey'+appkey;
+			tb_url = 'api/board/list?secstr='+bmysecstrs[i].id+'&appkey='+appkey;
 		$.ajax({
 			type: "GET",
 			url: tb_url,
