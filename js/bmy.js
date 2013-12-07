@@ -1,5 +1,5 @@
 var appkey = 'newweb';
-
+var popup;
 var bmysecstrs = [
 	{ id: '0', name: "本站系统" },
 	{ id: '1', name: "交通大学" },
@@ -136,7 +136,7 @@ function load_commend() {
 	});
 }
 
-function load_personal_status() {
+function load_personal_status(callback) {
 	if(typeof(localStorage.userid) == 'undefined')
 		$('#bmy-ps-info').html("<span id='login-button'>登录</span>");
 	else {
@@ -147,6 +147,9 @@ function load_personal_status() {
 			} else {
 				$('#bmy-ps-info').html("<span id='login-button'>登录</span>");
 			}
+
+			if(callback && typeof(callback)=="function")
+				callback();
 		});
 	}
 }
@@ -210,27 +213,26 @@ function bind_logout_button(callback) {
 }
 
 function bmy_app_init() {
-	load_personal_status();
-	load_top_board();
+	load_personal_status(function() {
+		$('#login-button').bind('click', function(e) {
+			e.preventDefault();
+			popup = $('#login-box').bPopup({
+				modalClose: false,
+				opacity: 0.6,
+				positionStyle: 'fixed'
+			});
+		});
 
-	var popup;
+		bind_logout_button(function() {
+			document.location.href = 'index.html';
+		});
 
-	$('#login-button').bind('click', function(e) {
-		e.preventDefault();
-		popup = $('#login-box').bPopup({
-			modalClose: false,
-			opacity: 0.6,
-			positionStyle: 'fixed'
+		bind_login_button(function() {
+			popup.close();
 		});
 	});
 
-	bind_login_button(function() {
-		popup.close();
-	});
+	load_top_board();
 
-	bind_logout_button(function() {
-		document.location.href = 'index.html';
-	});
-
-	setInterval(load_personal_status, 30000);
+	//setInterval(load_personal_status, 30000);
 }
