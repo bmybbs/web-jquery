@@ -220,6 +220,13 @@ function bind_logout_button(callback) {
 	});
 }
 
+function resize_section() {
+	var height_content = $('section#bmy-content').height();
+	var height_sidebar = $('section#bmy-sidebar-left').height();
+	if(height_sidebar < height_content + 500)
+		$('section#bmy-sidebar-left').height(height_content+500);
+}
+
 function bmy_app_init() {
 	load_personal_status(function() {
 		$('#login-button').bind('click', function(e) {
@@ -242,5 +249,6 @@ function bmy_app_init() {
 
 	load_top_board();
 
-	//setInterval(load_personal_status, 30000);
+	setInterval(load_personal_status, 30000);
+	setInterval(resize_section, 5000);
 }
