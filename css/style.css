@@ -23,7 +23,7 @@ body { height: 100%;}
 .bmy-font-sz-20		{ font-size: 20px; }
 .bmy-font-sz-12		{ font-size: 12px; }
 
-.bmy-span-icon		{ display: inline-block; width: 10px; height: 10px; }
+.bmy-span-icon		{ display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
 
 /*** 模板页框架 ***/
 #bmy-navbar {
