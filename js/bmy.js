@@ -142,8 +142,11 @@ function load_commend() {
 }
 
 function load_personal_status(callback) {
-	if(typeof(localStorage.userid) == 'undefined')
+	if(typeof(localStorage.userid) == 'undefined') {
 		$('#bmy-ps-info').html("<span id='login-button'>登录</span>");
+		if(callback && typeof(callback)=="function")
+			callback();
+	}
 	else {
 		var url_query_user = 'api/user/query?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&appkey=' + appkey;
 		$.getJSON(url_query_user, function(data) {
