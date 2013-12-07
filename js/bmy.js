@@ -50,7 +50,7 @@ function parse_topten_list(articles, callback) {
 function parse_sec_list(articles, callback) {
 	var out = "";
 	for(var i=0; i<articles.length; i++) {
-		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-gray1></span>";
+		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-gray1'></span>";
 		out += "<span>" + articles[i].title + "</span><span class='dashboard-item-author'>" + articles[i].author + "@" + articles[i].board + "</span></div>";
 		out += "<div class='float-right'>"+convert_timestamp_to_date_time_string((articles[i].type==1) ? articles[i].tid : articles[i].aid)+"</div>";
 		out += "<div class='clear'></div></div>";
