@@ -11,6 +11,7 @@ body { height: 100%;}
 
 .bmy-bg-color-blue1	{ background: #3485D8; }
 .bmy-bg-color-blue2	{ background: #2650CA; }
+.bmy-bg-color-blue3	{ background: #5BACFF; }
 .bmy-bg-color-red1	{ background: #FF4900; }
 .bmy-bg-color-red2	{ background: #D10000; }
 .bmy-bg-color-gray1	{ background: #A5A5A5; }
@@ -186,14 +187,27 @@ div.bmy-sectitle {
 .dashboard-header span { display: block; width: 100%; margin-bottom: 14px; }
 #random-thread-title { line-height: 36px; }
 
-#dashboard-guanshui,
-#dashboard-design,
-#dashboard-kexue,
-#dashboard-zhaopin {
+.dashboard-banner-big {
+	height: 110px;
+	margin: 30px 0;
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	padding-top: 45px;
+}
+.dashboard-banner-small {
 	height: 100px;
 	margin-bottom: 15px;
 	text-align: middle;
+	color: white;
+	width: 100%;
+	font-size: 18px;
 }
+
+.dashboard-banner-small div { font-size: 14px;}
+#dashboard-design { text-align: right; padding-top: 25px; padding-right: 45px; }
+#dashboard-guanshui { padding-top: 25px; padding-left: 45px; }
+#dashboard-kexue, #dashboard-zhaopin { padding-top: 36px; text-align: center; }
 
 /*** 版面 ***/
 #bmy-board-header {
