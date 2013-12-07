@@ -62,9 +62,14 @@ function parse_sec_list(articles, callback) {
 
 function load_top_board() {
 	for(var i=0; i<bmysecstrs.length; i++) {
+		var url;
+		if(typeof(localStorage.userid)!="undefined" && typeof(localStorage.sessid)!="undefined")
+			tb_url = 'api/board/list?secstr='+bmysecstrs[i].id+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey;
+		else
+			tb_url = 'api/board/list?secstr='+bmysecstrs[i].id+'&appkey'+appkey;
 		$.ajax({
 			type: "GET",
-			url: 'api/board/list?secstr='+bmysecstrs[i].id+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey,
+			url: tb_url,
 			dataType: 'json',
 			async: false,
 			success: function(data) {
