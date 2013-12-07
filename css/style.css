@@ -139,14 +139,14 @@ div#bmy-brd-index {
 	font-size: 14px;
 }
 
-div#bmy-helpsers {
+div#bmy-helpers {
 	margin-top: 20px;
 	padding-top: 30px;
 	border-top: #D5D5D5 1px solid;
 	min-height: 300px;
 }
 
-div#bmy-helpsers a {
+div#bmy-helpers a {
 	font-size: 14px;
 	line-height: 25px;
 }
@@ -184,6 +184,7 @@ div.bmy-sectitle {
 .dashboard-header { height: 180px; margin-bottom: 15px; }
 
 .dashboard-main-items { border-top: #999999 3px solid; padding: 10px 15px; margin-bottom: 10px; }
+.dashboard-main-title { margin-bottom: 10px; }
 .dashboard-main-title > * { vertical-align: bottom; }
 .dashboard-main-bg { color: #3485D8; font-size: 20px; line-height: 20px; display: inline-block; font-weight: bold; }
 .dashboard-main-title1 { color: #828282; font-size: 14px; line-height: 14px; display: inline-block; }
