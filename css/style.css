@@ -139,6 +139,18 @@ div#bmy-brd-index {
 	font-size: 14px;
 }
 
+div#bmy-helpsers {
+	margin-top: 20px;
+	padding-top: 30px;
+	border-top: #D5D5D5 1px solid;
+	min-height: 300px;
+}
+
+div#bmy-helpsers a {
+	font-size: 14px;
+	line-height: 25px;
+}
+
 div.bmy-sec {
 	margin-top: 20px;
 }
