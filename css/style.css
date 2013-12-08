@@ -483,6 +483,7 @@ section#bmy-article {
 	background: #F7F7F7;
 	font-size: 16px;
 	border-top: #D9D9D9 1px solid;
+	border-bottom: #D9D9D9 1px solid;
 }
 
 .article-author-info {
@@ -498,7 +499,15 @@ section#bmy-article {
 	border-bottom: #D9D9D9 1px dashed;
 }
 
+.article-author-func {
+	padding-top: 20px;
+}
+
 .article-body {
 	min-height: 350px;
 	width: 825px;
+	padding-top: 20px;
 }
+
+.article-author-info div { padding-left: 40px; }
+.article-main div { padding-left: 20px; }
