@@ -491,3 +491,27 @@ div.bmy-sectitle {
     right: -7px;
     top: -7px;
 }
+
+/*** 文章 ***/
+.article-item {
+	background: #F7F7F7;
+	font-size: 16px;
+	border-top: #D9D9D9 1px solid;
+}
+
+.article-author-info {
+	width: 160px;
+}
+
+.article-main {
+	background: white;
+}
+
+.article-author, .article-title {
+	line-height: 42px;
+	border-bottom: #D9D9D9 1px dashed;
+}
+
+.article-body {
+	min-height: 350px;
+}
