@@ -220,7 +220,7 @@ function load_board_article_list(mode) {
 	$.ajax({
 		type: "GET",
 		url: 'api/artilce/list?type=board&board='+board_name+'&btype='+mode+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey,
-		dataType: 'json'
+		dataType: 'json',
 		success: function (data) {
 			var article_table = $("<table class='table table-striped table-condensed'/>");
 			var e;
@@ -309,7 +309,7 @@ function BMYArticle(param) {
 	this.html_base = "<div class='article-item' id='article-" + this.aid + "'><div class='float-left article-author-info'><div class='article-author' /><div class='article-author-func' /></div><div class='float-right article-main'><div class='article-title' /><div class='article-body' /></div><div class='clear' /></div>";
 
 	this.Show = function() {
-		$(this.html_base).appendTo("section#");
+		$(this.html_base).appendTo("section#bmy-article");
 		var that = this;
 		$.ajax({
 			type: "GET",
