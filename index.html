@@ -63,26 +63,22 @@
 
 				if(typeof(is_local_rmbme) == 'undefined' || typeof(userid) == 'undefined' || typeof(sessid) == 'undefined') {
 					$('div#login-form').removeClass('hidden');
-					return;
-				}
-
-				if(is_local_rmbme==null || userid==null || sessid==null) {
+				} else if(is_local_rmbme==null || userid==null || sessid==null) {
 					$('div#login-form').removeClass('hidden');
-					return;
-				}
+				} else {
+					var url_checksession = 'api/user/checksession?userid='+userid+'&sessid='+sessid+'&appkey=newweb';
 
-				var url_checksession = 'api/user/checksession?userid='+userid+'&sessid='+sessid+'&appkey=newweb';
-
-				$.getJSON(url_checksession, function(data) {
-					if(data.errcode == 0) {
-						$('div#direct-login').removeClass('hidden');
-					} else {
+					$.getJSON(url_checksession, function(data) {
+						if(data.errcode == 0) {
+							$('div#direct-login').removeClass('hidden');
+						} else {
+							$('div#login-form').removeClass('hidden');
+						}
+					})
+					.fail(function() {
 						$('div#login-form').removeClass('hidden');
-					}
-				})
-				.fail(function() {
-					$('div#login-form').removeClass('hidden');
-				});
+					});
+				}
 
 				bind_login_button(function() {
 					document.location.href = 'dashboard.html';
