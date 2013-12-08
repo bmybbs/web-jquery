@@ -74,6 +74,10 @@ div.bmy-container {
 	height: 80px;
 }
 
+#bmy-logo {
+	padding: 20px 12px;
+}
+
 #bmy-sidebar-left ul.nav {
 	border: none !important;s
 }
