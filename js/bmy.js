@@ -200,7 +200,7 @@ function load_board_header(callback) {
 			$("div#board-header-left").html(out1);
 			$("div#board-header-right").html(out2);
 
-			if(data.hot_topic.length>0) {
+			if(data.hot_topic.length>0 && $("div#bmy-board-hot")!=null) {
 				for(var i=0; i<data.hot_topic.length; i++) {
 					var x=data.hot_topic[i];
 					$("<div class='hot-item'><div>HOT</div><a href='#'>" + x.title + "</a><span class='hot-data'>" + convert_timestamp_to_date_time_string(x.tid) + "</span></div>").appendTo("div#bmy-board-hot");
@@ -299,6 +299,33 @@ function resize_section() {
 	var height_sidebar = $('section#bmy-sidebar-left').height();
 	if(height_sidebar < height_content + 500)
 		$('section#bmy-sidebar-left').height(height_content+500);
+}
+
+function BMYArticle(param) {
+	this.aid = param.aid;
+	this.board = param.board;
+	this.num = (typeof(param.num)=="undefined") ? -1 : param.num;
+	this.is_threadmode = (typeof(param.mode)=="undefined") ? false : param.mode;
+	this.html_base = "<div class='article-item' id='article-" + this.aid + "'><div class='float-left article-author-info'><div class='article-author' /><div class='article-author-func' /></div><div class='float-right article-main'><div class='article-title' /><div class='article-body' /></div><div class='clear' /></div>";
+
+	this.Show = function() {
+		$(this.html_base).appendTo("section#");
+		var that = this;
+		$.ajax({
+			type: "GET",
+			url: "api/article/getHTMLContent?aid="+that.aid+"&board="+that.board+"&userid="+localStorage.userid+"&sessid="+localStorage.sessid+"&appkey="+appkey,
+			dataType: "json",
+			async: false,
+			success: function(data) {
+				if(data.errcode!=0)
+					return;
+
+				$('div#article-'+that.aid+' .article-author').html(data.author);
+				$('div#article-'+that.aid+' .article-title').html(data.board);	// TODO: 完善接口字段
+				$('div#article-'+that.aid+' .article-body').html(data.content);
+			}
+		});
+	}
 }
 
 function bmy_app_init() {
