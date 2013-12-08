@@ -477,6 +477,9 @@ div.bmy-sectitle {
 }
 
 /*** 文章 ***/
+section#bmy-article {
+	padding-top: 20px;
+}
 .article-item {
 	background: #F7F7F7;
 	font-size: 16px;
@@ -498,4 +501,5 @@ div.bmy-sectitle {
 
 .article-body {
 	min-height: 350px;
+	width: 825px;
 }
