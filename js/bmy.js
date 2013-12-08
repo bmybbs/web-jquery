@@ -18,6 +18,12 @@ var bmysecstrs = [
 	{ id: 'C', name: "俱乐部区" }
 ];
 
+function get_bmysec_name(sec_id) {
+	return $.grep(bmysecstrs, function(e) {
+		return e.id == sec_id;
+	})[0].name;
+}
+
 function convert_timestamp_to_date_time_string(timestamp) {
 	var t = new moment.unix(timestamp);
 	return t.format('YYYY.MM.DD HH:mm:ss');
@@ -160,6 +166,74 @@ function load_personal_status(callback) {
 				callback();
 		});
 	}
+}
+
+function load_board_header(callback) {
+	var board_name = $.url().param('bname');
+	if(typeof(board_name)=="undefined")
+		return;
+	$.ajax({
+		type: "GET",
+		url: 'api/board/info?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&bname=' + board_name + '&appkey=' + appkey,
+		dataType: 'json',
+		success: function(data) { // TODO:判断失败情况
+			var out1 = "<h3>"+data.zh_name+"</h3><div>"+data.name+"&nbsp;/&nbsp;"+get_bmysec_name(data.secstr)+"</div>";
+			out1 += "<button id='btn-add-to-collection' class='btn btn-primary'>加入收藏夹</button>"; // TODO: 判断是否已存在于收藏夹中
+			var out2 = "<div id='header-status'>今日新帖 / <span>"+data.today_new+"</span>&nbsp;&nbsp;在线 / <span>"+data.inboard_num+"</span>&nbsp;&nbsp;人气值 / <span>"+data.score+"</span></div>";
+			out2 += "<div>版主 /";
+			for(var i=0; i<4; ++i) {
+				if(data.bm[i] == null)
+					break;
+				out2 += " <a href='#'>" + data.bm[i] + "</a>";
+			}
+			out2 += "</div>";
+			if(data.bm[4] != null) {
+				out2 += "<div>小版主 /";
+				for(var i=4; i<data.bm.length; i++) {
+					if(data.bm[i] == null)
+						break;
+					out2 += " <a href='#'>" + data.bm[i] + "</a>";
+				}
+				out2 += "</div>";
+			}
+
+			$("div#board-header-left").html(out1);
+			$("div#board-header-right").html(out2);
+
+			if(data.hot_topic.length>0) {
+				for(var i=0; i<data.hot_topic.length; i++) {
+					var x=data.hot_topic[i];
+					$("<div class='hot-item'><div>HOT</div><a href='#'>" + x.title + "</a><span class='hot-data'>" + convert_timestamp_to_date_time_string(x.tid) + "</span></div>").appendTo("div#bmy-board-hot");
+				}
+			}
+
+			if(callback && typeof(callback)=="function")
+				callback();
+		}
+	});
+}
+
+function load_board_article_list(mode) {
+	var board_name = $.url().param('bname');
+	if(typeof(board_name)=="undefined")
+		return;
+	$.ajax({
+		type: "GET",
+		url: 'api/artilce/list?type=board&board='+board_name+'&btype='+mode+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey,
+		dataType: 'json'
+		success: function (data) {
+			var article_table = $("<table class='table table-striped table-condensed'/>");
+			var e;
+			for(var i=0; i<data.articlelist.length; i++) {
+				e = data.articlelist[i];
+				if(mode=="t")
+					$("<tr><td>"+i+"</td><td>"+e.title+"</td><td>"+e.author+"</td><td>"+convert_timestamp_to_date_time_string(e.tid)+"</td><td>"+e.th_num+"</td></tr>").appendTo(article_table);
+				else
+					$("<tr><td>"+i+"</td><td>"+e.title+"</td><td>"+e.author+"</td><td>"+convert_timestamp_to_date_time_string(e.aid)+"</td></tr>").appendTo(article_table);
+			}
+			$(article_table).appendTo("div#article-list");
+		}
+	});
 }
 
 function bind_login_button(callback) {

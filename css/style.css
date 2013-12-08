@@ -329,14 +329,11 @@ div.bmy-sectitle {
 }
 
 #postlist-publish {
-	width: 95px;
-	height: 38px;
-	margin-right: 180px;
-	border: #ccc 1px solid;
+	margin-right: 50px;
 }
 
 #postlist-mode, #postlist-topbottom {
-	padding: 4px 15px;
+	/*padding: 4px 15px;*/
 }
 
 #postlist-mode div{

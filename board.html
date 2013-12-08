@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>bmy</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link href="http://download2.ironblood.net/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+
+	<div id="bmy-navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div id="bmy-ps-info" class="float-right">
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div id="bmy-body">
+		<div class="bmy-container">
+			<section id="bmy-sidebar-left" class="float-left">
+				<div class="nav-collapse sidebar-nav">
+					<header>
+						<div id="bmy-logo">
+							<img src="http://download2.ironblood.net/static/images/logo.png" alt="兵马俑 BBS" />
+						</div>
+					</header>
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="#">兵马俑导读</a></li>
+						<li><a href="#">热门话题页</a></li>
+						<li><a href="#">收藏夹</a></li>
+					</ul>
+					<div id="brd-jmp-box">
+						<input type="text" placeholder="版面英文名称">
+					</div>
+					<div id="bmy-sns">
+						<div id="bmy-rr"><a href="http://e.weibo.com/bmybbs" target="_blank">兵马俑BBS<br>官方人人公共主页</a></div>
+						<div id="bmy-wb"><a href="http://page.renren.com/600748455" target="_blank">兵马俑BBS<br>官方微博</a></div>
+					</div>
+					<div id="bmy-brd-index">
+					</div>
+					<div id="bmy-helpers">
+						<a href="#">全站文章搜索</a><br>
+						<a href="#">BBS使用帮助</a><br>
+						<a href="#">发信给站长</a><br>
+					</div>
+				</div>
+			</section>
+
+			<section id="bmy-content" class="float-right">
+				<div id="container">
+					<header id="bmy-board-header">
+						<div id="board-header-left"></div>
+						<div id="board-header-right"></div>
+					</header>
+					<section id="bmy-board-content">
+						<div id="bmy-board-hot"></div>
+						<div id="bmy-board-postlist">
+							<div id="postlist-operation">
+								<div class="btn-toolbar float-left">
+									<div id="postlist-publish" class="btn-group">
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="#">发表文章</a></li>
+											<li><a href="#">模板发文</a></li>
+										</ul>
+									</div>
+									<div id="postlist-mode" class="btn-group">
+										<button type="button" class="btn btn-default">一般模式</button>
+										<button type="button" class="btn btn-default" disabled="disabled">主题模式</button>
+									</div>
+									<div id="postlist-topbottom" class="btn-group">
+										<button type="button" class="btn btn-default">置顶</button>
+										<button type="button" class="btn btn-default" disabled="disabled">置底</button>
+									</div>
+								</div>
+								<div id="postlist-paging" class="float-right">
+									<span><a>首页</a> / <a>上一页</a> / <a>下一页</a> / <a>末页</a></span>
+									<form>
+										<input type="text">
+										<button type="submit">></button>
+									</form>
+									<span>2122 / 2122</span>
+								</div>
+								<div class="clear" />
+							</div>
+							<div id="article-list"></div>
+						</div>
+					</section>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div id="login-box" class="popup form-signin">
+		<span class="bpopup-button b-close"><span>X</span></span>
+		<div id="login-form">
+			<input class="form-control input-lg" autofocus="" id="username" type="text" placeholder="用户名">
+			<input class="form-control input-lg" id="password" type="password" placeholder="密码">
+			<label><input id="chk_remember" type="checkbox">记住我</label>
+			<button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+		</div>
+	</div>
+
+	<script src="http://download2.ironblood.net/static/js/jquery-1.10.2.min.js"></script>
+	<script src="http://download2.ironblood.net/static/js/jquery.bpopup.min.js"></script>
+	<script src="http://download2.ironblood.net/static/js/bootstrap.min.js"></script>
+	<script src="http://download2.ironblood.net/static/js/purl.js"></script>
+	<script src="http://download2.ironblood.net/static/js/moment-with-langs.min.js"></script>
+	<script src="js/bmy.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			bmy_app_init();
+
+			load_board_header();
+			load_board_article_list("n");
+		});
+	</script>
+
+	</body>
+</html>
