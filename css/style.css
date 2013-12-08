@@ -251,6 +251,7 @@ div.bmy-sectitle {
 
 #board-header-right div{
 	float: right;
+	clear: both;
 	margin-bottom: 4px;
 }
 
