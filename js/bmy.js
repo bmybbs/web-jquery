@@ -83,7 +83,7 @@ function load_top_board() {
 				var boards = data.boardlist; // 默认人气排序
 				var maxnum = (boards.length > 5) ? 5 : boards.length;
 				for(var j=0; j<maxnum; j++) {
-					out += "<a href='#'>"+boards[j].zh_name+"</a> ";
+					out += "<a href='board.html?bname"+boards[j].name+"'>"+boards[j].zh_name+"</a> ";
 				}
 				out += "</div></div>";
 				$(out).appendTo('div#bmy-brd-index');
@@ -177,7 +177,7 @@ function load_board_header(callback) {
 		url: 'api/board/info?userid=' + localStorage.userid + '&sessid=' + localStorage.sessid + '&bname=' + board_name + '&appkey=' + appkey,
 		dataType: 'json',
 		success: function(data) { // TODO:判断失败情况
-			var out1 = "<h3>"+data.zh_name+"</h3><div>"+data.name+"&nbsp;/&nbsp;"+get_bmysec_name(data.secstr)+"</div>";
+			var out1 = "<h3><a href='board.html?bname="+data.name+"'>"+data.zh_name+"</a></h3><div><a href='board.html?bname="+data.name+"'>"+data.name+"</a>&nbsp;/&nbsp;"+get_bmysec_name(data.secstr)+"</div>";
 			out1 += "<button id='btn-add-to-collection' class='btn btn-primary'>加入收藏夹</button>"; // TODO: 判断是否已存在于收藏夹中
 			var out2 = "<div id='header-status'>今日新帖 / <span>"+data.today_new+"</span>&nbsp;&nbsp;在线 / <span>"+data.inboard_num+"</span>&nbsp;&nbsp;人气值 / <span>"+data.score+"</span></div>";
 			out2 += "<div>版主 /";
