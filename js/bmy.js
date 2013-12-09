@@ -305,7 +305,7 @@ function bind_post_button() {
 	$('button#btn-post').click(function() {
 		$.ajax({
 			type: "POST",
-			url: "api/article/post?bname="+$.url().param('bname')+"&title="+encodeURIComponent($("#article-title").val())+"&userid="+localStorage.userid+"&sessid="+localStorage.sessid+"&appkey="+appkey+"&token="+localStorage,
+			url: "api/article/post?board="+$.url().param('bname')+"&title="+encodeURIComponent($("#article-title").val())+"&userid="+localStorage.userid+"&sessid="+localStorage.sessid+"&appkey="+appkey+"&token="+localStorage.token,
 			data: "content="+encodeURIComponent($("#article-content").val()),
 			async: false,
 			dataType: "json",
