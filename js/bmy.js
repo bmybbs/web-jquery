@@ -321,7 +321,16 @@ function BMYArticle(param) {
 					return;
 
 				$('div#article-'+that.aid+' .article-author').html(data.author);
-				$('div#article-'+that.aid+' .article-title').html(data.title);
+				$('div#article-'+that.aid+' .article-author-func').html("<div><a class='sendmail-btn' id='sendmail-"+data.author+"' href='#'>发送站内信</a></div><div><a class='addfriend-btn' id='addfriend-"+data.author+"' href='#'>加为好友</a></div>");
+				var title_div = "<div class='float-left'>"+data.title+"</div>";
+				title_div += "<div class='float-right btn-group'><button type='button' class='btn'>回复本文</button>";
+				if(that.is_threadmode)
+					title_div += "</div>";
+				else {
+					title_div += "<button type='button' class='btn dropdown-toggle'><span class='caret'></span><span class='sr-only'>Toggle Dropdown</span></button>";
+					title_div += "<ul class='dropdown-menu' role='menu'><li><a href='#'>同主题由此展开</a></li><li class='divider'></li><li><a href='#'>同主题列表</a></li><li><a href='#'>同主题从楼主展开</a></li></ul></div>";
+				}
+				$('div#article-'+that.aid+' .article-title').html(title_div);
 				$('div#article-'+that.aid+' .article-body').html(data.content);
 			}
 		});
