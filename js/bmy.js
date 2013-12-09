@@ -32,7 +32,7 @@ function convert_timestamp_to_date_time_string(timestamp) {
 function parse_article_list(articles, callback) {
 	var out = "";
 	for(var i=0; i<articles.length; i++) {
-		out += "<div class='dashboard-item'><span>" + articles[i].title + "</span></div>";
+		out += "<div class='dashboard-item'><span><a href='article.html?bname=" + articles[i].board + "&aid=" + articles[i].aid + "'>" + articles[i].title + "</a></span></div>";
 	}
 
 	if(callback && typeof(callback)=="function")
@@ -44,7 +44,7 @@ function parse_topten_list(articles, callback) {
 	for(var i=0; i<articles.length; i++) {
 		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-";
 		out += (i<3) ? "red1" : "gray1";
-		out += "'></span><span>" + articles[i].title + "</span><span class='dashboard-item-author'>" + articles[i].author + "@" + articles[i].board + "</span></div>";
+		out += "'></span><span><a href='article.html?bname=" + articles[i].board + "&aid=" + articles[i].aid + "'>" + articles[i].title + "</a></span><span class='dashboard-item-author'>" + articles[i].author + "@<a href='article.html?bname=" + articles[i].board + "'>" + articles[i].board + "</a></span></div>";
 		out += "<div class='float-right'>"+convert_timestamp_to_date_time_string((articles[i].type==1) ? articles[i].tid : articles[i].aid)+"</div>";
 		out += "<div class='clear'></div></div>";
 	}
@@ -57,7 +57,7 @@ function parse_sec_list(articles, callback) {
 	var out = "";
 	for(var i=0; i<articles.length; i++) {
 		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-gray1'></span>";
-		out += "<span>" + articles[i].title + "</span><span class='dashboard-item-author'>" + articles[i].author + "@" + articles[i].board + "</span></div>";
+		out += "<span><a href='article.html?bname=" + articles[i].board + "&aid=" + articles[i].aid + "'>" + articles[i].title + "</a></span><span class='dashboard-item-author'>" + articles[i].author + "@<a href='article.html?bname=" + articles[i].board + "'>" + articles[i].board + "</a></span></div>";
 		out += "<div class='float-right'>"+convert_timestamp_to_date_time_string((articles[i].type==1) ? articles[i].tid : articles[i].aid)+"</div>";
 		out += "<div class='clear'></div></div>";
 	}
@@ -229,7 +229,7 @@ function load_board_article_list(mode) {
 				if(mode=="t")
 					$("<tr><td>"+i+"</td><td>"+e.title+"</td><td>"+e.author+"</td><td>"+convert_timestamp_to_date_time_string(e.tid)+"</td><td>"+e.th_num+"</td></tr>").appendTo(article_table);
 				else
-					$("<tr><td>"+i+"</td><td>"+e.title+"</td><td>"+e.author+"</td><td>"+convert_timestamp_to_date_time_string(e.aid)+"</td></tr>").appendTo(article_table);
+					$("<tr><td>"+i+"</td><td><a href='article.html?bname="+e.board+"&aid="+e.aid+"'>"+e.title+"</a></td><td>"+e.author+"</td><td>"+convert_timestamp_to_date_time_string(e.aid)+"</td></tr>").appendTo(article_table);
 			}
 			$(article_table).appendTo("div#article-list");
 		}
