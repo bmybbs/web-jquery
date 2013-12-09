@@ -44,7 +44,7 @@ function parse_topten_list(articles, callback) {
 	for(var i=0; i<articles.length; i++) {
 		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-";
 		out += (i<3) ? "red1" : "gray1";
-		out += "'></span><span><a href='article.html?bname=" + articles[i].board + "&aid=" + articles[i].aid + "'>" + articles[i].title + "</a></span><span class='dashboard-item-author'>" + articles[i].author + "@<a href='article.html?bname=" + articles[i].board + "'>" + articles[i].board + "</a></span></div>";
+		out += "'></span><span><a href='article.html?bname=" + articles[i].board + "&aid=" + articles[i].tid + "'>" + articles[i].title + "</a></span><span class='dashboard-item-author'>" + articles[i].author + "@<a href='board.html?bname=" + articles[i].board + "'>" + articles[i].board + "</a></span></div>";
 		out += "<div class='float-right'>"+convert_timestamp_to_date_time_string((articles[i].type==1) ? articles[i].tid : articles[i].aid)+"</div>";
 		out += "<div class='clear'></div></div>";
 	}
@@ -57,7 +57,7 @@ function parse_sec_list(articles, callback) {
 	var out = "";
 	for(var i=0; i<articles.length; i++) {
 		out += "<div class='dashboard-item'><div class='dashboard-item-title float-left'><span class='bmy-span-icon bmy-bg-color-gray1'></span>";
-		out += "<span><a href='article.html?bname=" + articles[i].board + "&aid=" + articles[i].aid + "'>" + articles[i].title + "</a></span><span class='dashboard-item-author'>" + articles[i].author + "@<a href='article.html?bname=" + articles[i].board + "'>" + articles[i].board + "</a></span></div>";
+		out += "<span><a href='article.html?bname=" + articles[i].board + "&aid=" + articles[i].tid + "'>" + articles[i].title + "</a></span><span class='dashboard-item-author'>" + articles[i].author + "@<a href='board.html?bname=" + articles[i].board + "'>" + articles[i].board + "</a></span></div>";
 		out += "<div class='float-right'>"+convert_timestamp_to_date_time_string((articles[i].type==1) ? articles[i].tid : articles[i].aid)+"</div>";
 		out += "<div class='clear'></div></div>";
 	}
