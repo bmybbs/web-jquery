@@ -304,9 +304,9 @@ function bind_post_button() {
 
 	$('button#btn-post').click(function() {
 		$.ajax({
-			type: "GET",
-			url: "api/article/post?bname"+$.url().param('bname')+"&title="+$("#article-title").val().serialize()+"&userid="+localStorage.userid+"&sessid="+localStorage.sessid+"&appkey="+appkey+"&token="+localStorage,
-			data: "content="+$("#article-content").val().serialize(),
+			type: "POST",
+			url: "api/article/post?bname="+$.url().param('bname')+"&title="+encodeURIComponent($("#article-title").val())+"&userid="+localStorage.userid+"&sessid="+localStorage.sessid+"&appkey="+appkey+"&token="+localStorage,
+			data: "content="+encodeURIComponent($("#article-content").val()),
 			async: false,
 			dataType: "json",
 			success: function(data) {
