@@ -25,6 +25,9 @@ body { height: 100%;}
 
 .bmy-span-icon		{ display: inline-block; width: 10px; height: 10px; margin-right: 5px; }
 
+#post-box { width: 800px; padding: 15px 20px; }
+#post-box input, #post-box textarea, #post-box button { margin-bottom: 15px; }
+
 /*** 模板页框架 ***/
 #bmy-navbar {
 	margin-bottom: 0px !important;

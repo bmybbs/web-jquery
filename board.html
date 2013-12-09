@@ -60,7 +60,7 @@
 									<div id="postlist-publish" class="btn-group">
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">发表文章 <span class="caret"></span></button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">发表文章</a></li>
+											<li><a id="post-button" href="#">发表文章</a></li>
 											<li><a href="#">模板发文</a></li>
 										</ul>
 									</div>
@@ -101,6 +101,15 @@
 		</div>
 	</div>
 
+	<div id="post-box" class="popup">
+		<span class="bpopup-button b-close"><span>X</span></span>
+		<div id="post-form">
+			<input class="form-control input-lg" autofocus="" id="article-title" type="text" placeholder="标题">
+			<textarea class="form-control" id="article-content" rows="20" placeholder="想和小陶人们说点什么呢？"></textarea>
+			<button id="btn-post" class="btn btn-primary btn-lg">发表</button>
+		</div>
+	</div>
+
 	<script src="http://download2.ironblood.net/static/js/jquery-1.10.2.min.js"></script>
 	<script src="http://download2.ironblood.net/static/js/jquery.bpopup.min.js"></script>
 	<script src="http://download2.ironblood.net/static/js/bootstrap.min.js"></script>
@@ -113,6 +122,7 @@
 
 			load_board_header();
 			load_board_article_list("n");
+			bind_post_button();
 		});
 	</script>
 
