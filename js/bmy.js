@@ -294,6 +294,39 @@ function bind_logout_button(callback) {
 	});
 }
 
+function bind_post_button() {
+	$('a#post-button').click(function() {
+		window.postbox = $('#post-box').bPopup({
+			speed: 650,
+			transition: 'slideIn'
+		});
+	});
+
+	$('button#btn-post').click(function() {
+		$.ajax({
+			type: "GET",
+			url: "api/article/post?bname"+$.url().param('bname')+"&title="+$("#article-title").val().serialize()+"&userid="+localStorage.userid+"&sessid="+localStorage.sessid+"&appkey="+appkey+"&token="+localStorage,
+			data: "content="+$("#article-content").val().serialize(),
+			async: false,
+			dataType: "json",
+			success: function(data) {
+				if(data.errcode == 0) {
+					localStorage.token = data.token;
+					window.postbox.close();
+					document.location.href = 'article.html?bname='+$.url().param('bname')+'&aid='+data.aid;
+				} else {
+					window.postbox.close();
+					alert(data.errcode);
+				}
+			},
+			error: function(xhr, option, err) {
+				alert(err);
+				window.postbox.close();
+			}
+		});
+	});
+}
+
 function resize_section() {
 	var height_content = $('section#bmy-content').height();
 	var height_sidebar = $('section#bmy-sidebar-left').height();
