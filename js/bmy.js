@@ -321,7 +321,7 @@ function BMYArticle(param) {
 					return;
 
 				$('div#article-'+that.aid+' .article-author').html(data.author);
-				$('div#article-'+that.aid+' .article-title').html(data.board);	// TODO: 完善接口字段
+				$('div#article-'+that.aid+' .article-title').html(data.title);
 				$('div#article-'+that.aid+' .article-body').html(data.content);
 			}
 		});
