@@ -219,7 +219,7 @@ function load_board_article_list(mode) {
 		return;
 	$.ajax({
 		type: "GET",
-		url: 'api/artilce/list?type=board&board='+board_name+'&btype='+mode+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey,
+		url: 'api/article/list?type=board&board='+board_name+'&btype='+mode+'&userid='+localStorage.userid+'&sessid='+localStorage.sessid+'&appkey='+appkey,
 		dataType: 'json',
 		success: function (data) {
 			var article_table = $("<table class='table table-striped table-condensed'/>");
