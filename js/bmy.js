@@ -83,9 +83,9 @@ function load_top_board() {
 				var boards = data.boardlist; // 默认人气排序
 				var maxnum = (boards.length > 5) ? 5 : boards.length;
 				for(var j=0; j<maxnum; j++) {
-					out += "<a href='board.html?bname="+boards[j].name+"'>"+boards[j].zh_name+"</a> ";
+					out += "<a href='board.html?bname="+boards[j].name+"'>"+boards[j].zh_name+"</a> | ";
 				}
-				out += "</div></div>";
+				out += " <a class='label label-info' href='#'>更多&gt;&gt;</a></div></div>";
 				$(out).appendTo('div#bmy-brd-index');
 			}
 		});
