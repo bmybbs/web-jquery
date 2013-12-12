@@ -506,6 +506,8 @@ section#bmy-article {
 	padding-top: 20px;
 }
 
+.article-author-func a { display: block; }
+
 .article-body {
 	min-height: 350px;
 	width: 825px;
